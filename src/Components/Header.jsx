@@ -1,10 +1,27 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // If you're using React Router 
-import logo from '../assets/jewelryLogo.png'
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Drawer } from 'antd';
+import logo from '../assets/jewelryLogo.png'
 
 const Header = () => {
     // Dummy data for jewelry types
     const jewelryTypes = ['Necklaces', 'Earrings', 'Bracelets', 'Rings'];
+
+    const [showDrawer, setShowDrawer] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+
+    const addToCart = (product) => {
+        setCartItems([...cartItems, product]);
+    };
+
+    const showDrawerHandler = () => {
+        setShowDrawer(true);
+    };
+
+    const onCloseDrawer = () => {
+        setShowDrawer(false);
+    };
 
     return (
         <header className="bg-white shadow-md  py-4 px-4 lg:px-10">
@@ -32,31 +49,30 @@ const Header = () => {
                     </nav>
                 </div>
                 <div className="flex items-center">
-                    <Link to="/cart" className="ml-6 lg:ml-0">
+                    <div className="ml-6 lg:ml-0" onClick={showDrawerHandler}>
                         <ShoppingCartOutlined className=' text-[32px] text-yellow-600' />
-                    </Link>
+                    </div>
                 </div>
             </div>
-            {/* Mobile Menu */}
-            <nav className="lg:hidden mt-4">
-                <ul className="flex flex-col">
-                    {jewelryTypes.map(type => (
-                        <li key={type} className="my-2">
-                            <Link
-                                to={`/products/${type.toLowerCase()}`}
-                                className="hover:text-gray-300"
-                            >
-                                {type}
-                            </Link>
-                        </li>
-                    ))}
-                    <li>
-                        <Link to="/cart" className="mt-4">
-                            <img src="/path/to/cart-icon.png" alt="Shopping Cart" className="h-6" />
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            {/* Drawer */}
+            <Drawer
+                title="Cart Items"
+                placement="right"
+                onClose={onCloseDrawer}
+                visible={showDrawer}
+            >
+                {cartItems.length === 0 ? (
+                    <p>No items in the cart</p>
+                ) : (
+                    <ul>
+                        {cartItems.map((item, index) => (
+                            <li key={index} className="mb-2">
+                                {item.productName} - {item.price}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </Drawer>
         </header>
     );
 };
