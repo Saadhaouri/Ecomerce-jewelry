@@ -31,14 +31,14 @@ const jewelryData = [
         name: "Pearl Necklace",
         price: "$199",
         category: "Necklace",
-        images: ["https://www.eu-bloom-boutique.com/media/catalog/product/p/e/personalised-star-birthstone-necklace-07_1.jpg?width=265&height=265&store=euro&image-type=image"],
+        images: ["https://www.eu-bloom-boutique.com/media/catalog/product/p/e/personalised-star-birthstone-necklace-07_1.jpg?width=265&height=265&store=euro&image-type=image", "https://i.etsystatic.com/12787123/r/il/216890/3388777418/il_570xN.3388777418_mn93.jpg"],
         promotion: null
     },
     {
         name: "Amethyst Ring",
         price: "$159",
         category: "Ring",
-        images: ["https://i.etsystatic.com/12787123/r/il/216890/3388777418/il_570xN.3388777418_mn93.jpg"],
+        images: ["https://i.etsystatic.com/12787123/r/il/216890/3388777418/il_570xN.3388777418_mn93.jpg", "https://i.etsystatic.com/12787123/r/il/216890/3388777418/il_570xN.3388777418_mn93.jpg"],
         promotion: "20% Off"
     },
     {
