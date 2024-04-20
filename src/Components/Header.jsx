@@ -61,12 +61,11 @@ const Header = () => {
                     </nav>
                 </div>
                 <div className="flex items-center">
-                    <div className="ml-6 lg:ml-0 relative" onClick={showDrawerHandler}>
+                    <div className="ml-6 lg:ml-0 relative" >
+                        <Link to="/wishlist"> <HeartOutlined className="text-[32px] text-yellow-600" />
+                        </Link>
                         <Badge count={cartItems.length} offset={[10, -10]}>
-                            <HeartOutlined className="text-[32px] text-yellow-600" />
-                        </Badge>
-                        <Badge count={cartItems.length} offset={[10, -10]}>
-                            <ShoppingCartOutlined className=" ml-2 text-[32px] text-yellow-600" />
+                            <ShoppingCartOutlined onClick={showDrawerHandler} className=" ml-2 text-[32px] text-yellow-600" />
                         </Badge>
                     </div>
                 </div>

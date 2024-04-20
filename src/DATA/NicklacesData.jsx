@@ -1,4 +1,4 @@
-const jewelryData = [
+const NicklacesData = [
   {
     id: Math.random().toString(36).substring(7),
     name: "Sapphire Pendant",
@@ -86,7 +86,7 @@ const jewelryData = [
     name: "Diamond Tennis Bracelet",
     price: "$1299",
     category: "Bracelet",
-    images: ["image_url_9"],
+    images: ["https://ie.pandora.net/dw/image/v2/BJRN_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw8ea1cd52/productimages/singlepackshot/368425C01_RGB.jpg?sw=900&sh=900&sm=fit&sfrm=png&bgcolor=F5F5F5"],
     promotion: "Free Shipping",
   },
   {
@@ -94,7 +94,7 @@ const jewelryData = [
     name: "Opal Pendant",
     price: "$299",
     category: "Pendant",
-    images: ["image_url_10"],
+    images: ["https://emmaisraelsson.com/bilder/artiklar/neck130.jpg?m=1687780712"],
     promotion: null,
   },
   {
@@ -102,7 +102,7 @@ const jewelryData = [
     name: "Gold Bangle",
     price: "$499",
     category: "Bracelet",
-    images: ["image_url_11"],
+    images: ["https://i.ebayimg.com/images/g/HpwAAOSwZmdjeJjz/s-l400.jpg"],
     promotion: null,
   },
   {
@@ -110,7 +110,7 @@ const jewelryData = [
     name: "Sapphire Ring",
     price: "$379",
     category: "Ring",
-    images: ["image_url_12"],
+    images: ["https://www.jewelili.com/cdn/shop/products/61RiXuIdUYL_2400x.jpg?v=1646809064"],
     promotion: null,
   },
   {
@@ -118,7 +118,7 @@ const jewelryData = [
     name: "Emerald Stud Earrings",
     price: "$349",
     category: "Earrings",
-    images: ["image_url_13"],
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmHIASlz3L-VvqkTR3CQ_GtJTZWyjruxTQ0MmRzp4LZhEwGNH3ewzRCGgGAwlbpqGKJzk&usqp=CAU"],
     promotion: "10% Off",
   },
   {
@@ -126,7 +126,7 @@ const jewelryData = [
     name: "Diamond Solitaire Ring",
     price: "$899",
     category: "Ring",
-    images: ["image_url_14"],
+    images: ["https://www.jtidiamondco.com/wp-content/uploads/2018/11/N1214WG.jpg"],
     promotion: "Free Shipping",
   },
   {
@@ -134,7 +134,7 @@ const jewelryData = [
     name: "Rose Gold Necklace",
     price: "$329",
     category: "Necklace",
-    images: ["image_url_15"],
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQet8HSuSmLNnoiDbMxdja-5c6TPSsWOPxxCESWj7bkV6-V9tzJbsS17n6F2GKsGYRp-ek&usqp=CAU"],
     promotion: null,
   },
   {
@@ -142,7 +142,7 @@ const jewelryData = [
     name: "Turquoise Bracelet",
     price: "$149",
     category: "Bracelet",
-    images: ["image_url_16"],
+    images: ["https://www.rajjewels.com/media/catalog/product/cache/35ee8e651dee9f77109dd3d0747e56b7/d/n/dns3671_1_.jpg"],
     promotion: null,
   },
   {
@@ -150,7 +150,7 @@ const jewelryData = [
     name: "Diamond Cross Pendant",
     price: "$599",
     category: "Pendant",
-    images: ["image_url_17"],
+    images: ["https://www.vanrijkestatejewellers.com/cdn/shop/products/24002.jpg"],
     promotion: null,
   },
   {
@@ -158,7 +158,7 @@ const jewelryData = [
     name: "Gold Dangle Earrings",
     price: "$199",
     category: "Earrings",
-    images: ["image_url_18"],
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyg2CyfdLIY4hsSJ0xFXJWeU6R1HVsVrS3qJJ2596SYGcCz9OGWN8A8tGGkL4Uo6WPP64&usqp=CAU"],
     promotion: null,
   },
   {
@@ -166,7 +166,7 @@ const jewelryData = [
     name: "Ruby Bracelet",
     price: "$379",
     category: "Bracelet",
-    images: ["image_url_19"],
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWvwOjcTRz7rsMeFMOkrIaSkj71beKnJCkoulc6FJFi7-ThYvwKqz6L6_oWCcgKvIMFQU&usqp=CAU"],
     promotion: "15% Off",
   },
   {
@@ -174,9 +174,9 @@ const jewelryData = [
     name: "Diamond Cluster Ring",
     price: "$699",
     category: "Ring",
-    images: ["image_url_20"],
+    images: ["https://images.vestiairecollective.com/cdn-cgi/image/f=auto/produit/39541849-1_7.jpg"],
     promotion: null,
   },
 ];
 
-export default jewelryData;
+export default NicklacesData;

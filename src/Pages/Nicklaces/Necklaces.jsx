@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../Components/ProductCard.jsx";
-import jewelryData from "../DATA/jewelrydata.jsx";
-import CarouselBanner from "../Components/CarouselBanner.jsx";
+import ProductCard from "../../Components/ProductCard.jsx";
+import NicklacesData from "../../DATA/NicklacesData.jsx";
+import CarouselBanner from "../../Components/CarouselBanner.jsx";
+import HeroSection from "../../Components/HeroSection.jsx";
 const Necklaces = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 8;
   const [cartItems, setCartItems] = useState([]);
+  const [wishList, setWishList] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
@@ -16,16 +18,21 @@ const Necklaces = () => {
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
+    const storedWishList = localStorage.getItem("WishList");
+    if (storedWishList) {
+      setWishList(JSON.parse(storedWishList));
+    }
   }, []); // Empty dependency array ensures this effect runs only once on component mount
 
   useEffect(() => {
     // Update local storage whenever cartItems state changes
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]); // This effect runs whenever cartItems state changes
+    localStorage.setItem("wishList", JSON.stringify(wishList));
+  }, [cartItems, wishList]); // This effect runs whenever cartItems state changes
 
   useEffect(() => {
     // Filter jewelryData based on searchQuery
-    const filtered = jewelryData.filter((item) =>
+    const filtered = NicklacesData.filter((item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredData(filtered);
@@ -42,6 +49,10 @@ const Necklaces = () => {
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
+  const addToWish = (product) => {
+    console.log("product added to wishlist => ", product)
+    setWishList([...wishList, product]);
+  };
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -51,7 +62,8 @@ const Necklaces = () => {
     <div className="container mx-auto px-4">
       {/* Category Button in Header */}
       <div className="flex justify-between items-center py-4">
-        <h2>Necklaces</h2>
+        <h2 className="text-3xl font-bold text-center text-black">Necklaces</h2>
+
         <input
           type="text"
           placeholder="Search Necklaces"
@@ -63,9 +75,8 @@ const Necklaces = () => {
 
       {/* Search Bar */}
       <div
-        className={`mt-4 ${
-          showSearch ? "block" : "hidden"
-        } transition-all duration-500 ease-in-out`}
+        className={`mt-4 ${showSearch ? "block" : "hidden"
+          } transition-all duration-500 ease-in-out`}
       ></div>
 
       {/* Main Content Area */}
@@ -80,6 +91,7 @@ const Necklaces = () => {
               price={item.price}
               promotion={item.promotion}
               onAddToCart={() => addToCart(item)}
+              onAddToWishlist={() => addToWish(item)}
               id={item.id}
             />
           ))}
@@ -98,9 +110,8 @@ const Necklaces = () => {
             (number) => (
               <button
                 key={number}
-                className={`bg-black text-white px-4 py-2 mx-4 ${
-                  currentPage === number + 1 ? "bg-yellow-500" : ""
-                }`}
+                className={`bg-black text-white px-4 py-2 mx-4 ${currentPage === number + 1 ? "bg-yellow-500" : ""
+                  }`}
                 onClick={() => paginate(number + 1)}
               >
                 {number + 1}
@@ -121,6 +132,8 @@ const Necklaces = () => {
         {/* Carousel  */}
 
         <CarouselBanner />
+
+        <HeroSection />
       </div>
     </div>
   );

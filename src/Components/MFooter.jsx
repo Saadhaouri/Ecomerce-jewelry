@@ -1,4 +1,5 @@
-const Footer = () => {
+
+const MFooter = () => {
     return (
         <footer className="w-full bg-black mt-10 font-sans">
             <div className="container px-6 py-12 mx-auto flex flex-col items-center justify-center">
@@ -47,7 +48,7 @@ const Footer = () => {
                 <p className="text-center mt-6">© 2023 Your Company Inc. All rights reserved.</p>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
+export default MFooter
