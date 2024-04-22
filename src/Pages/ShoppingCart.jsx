@@ -94,7 +94,7 @@ const ShoppingCart = () => {
                     <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
                     <div className="flex justify-between mt-10 mb-5">
                         <span className="font-semibold text-sm uppercase">Items {cartItems.length}</span>
-                        <span className="font-semibold text-sm"> =*  ${calculateTotal().toFixed(2)}</span>
+                        <span className="font-semibold text-sm">   ${calculateTotal().toFixed(2)}</span>
                     </div>
                     <div>
                         <label htmlFor="shipping" className="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
