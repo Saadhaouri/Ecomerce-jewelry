@@ -1,17 +1,23 @@
 import { Carousel } from 'antd';
 
-const CarouselBanner = () => {
+const CarouselBanner = ({ images }) => {
+    // Ensure images is always an array
+    const safeImages = Array.isArray(images) ? images : [];
+
     return (
         <Carousel autoplay className='mt-4'>
-            <div>
-                <img src="https://christopherduquet.com/wp-content/uploads/2022/11/necklace-designer-philosophy-focus-on-natural-beauty-christopher-duquet-fine-jewelry-evanston-il.jpg" alt="" />
-            </div>
-            <div>
-                <img src="https://christopherduquet.com/wp-content/uploads/2021/11/EC-snowflakes-falling-snow-diamond-couture-necklace-christopher-duquet-banner.jpg" alt="" />
-            </div>
+            {safeImages.map((img, index) => (
+                <div key={index}>
+                    <img src={img} alt={`Slide ${index}`} style={{ width: '100%', height: 'auto' }} />
+                </div>
+            ))}
+        </Carousel>
+    );
+};
 
+// Default props
+CarouselBanner.defaultProps = {
+    images: [] // Assuming no images are passed, it will default to an empty array
+};
 
-        </Carousel>)
-}
-
-export default CarouselBanner
+export default CarouselBanner;

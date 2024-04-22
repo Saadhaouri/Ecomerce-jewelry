@@ -10,10 +10,15 @@ import Rings from "./Pages/Rings";
 import ProductDetailsPage from "./Pages/ProductDetailsPage.jsx"; // Import ProductDetails page
 import Wishlist from "./Pages/Wishlist.jsx";
 import MFooter from "./Components/MFooter.jsx";
+import ShoppingCart from "./Pages/ShoppingCart.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   return (
     <Router>
-      <div className="bg-greyIsh">
+      <div className="bg-greyIsh font-poppins">
         <Navbar />
         <Title />
         <Header />
@@ -25,7 +30,10 @@ function App() {
           <Route path="/rings" element={<Rings />} />
           <Route path="/necklaces/product-details/:id" element={<ProductDetailsPage />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cartitems" element={<ShoppingCart />} />
         </Routes>
+
+        <ToastContainer />
         <MFooter />
       </div>
     </Router>

@@ -1,6 +1,9 @@
 import { MdOutlineDelete } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { useState } from "react";
+import { FaHeartBroken } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import FeaturedProducts from "../Components/FeaturedProducts";
 
 function Wishlist() {
     const [wishlistItems, setWishlistItems] = useState(JSON.parse(localStorage.getItem('wishList')) || []);
@@ -25,41 +28,49 @@ function Wishlist() {
     };
 
     return (
-        <div className="bg-white p-8 m-8 shadow-lg">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-8">Your Favorite Product : </h1>
-                {wishlistItems.length === 0 ? (
-                    <p className="text-gray-600 ">Your wishlist is empty.</p>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {wishlistItems.map((item, index) => (
-                            <div key={index} className="bg-white  text-black  shadow-md rounded-lg overflow-hidden flex items-center p-4">
-                                <div className="flex-shrink-0">
-                                    <img src={item.images} alt={item.name} className="h-16 w-16 rounded-full object-cover" />
-                                </div>
-                                <div className="ml-4 flex-grow">
-                                    <div className="text-xl font-semibold text-gray-800 mb-2">{item.name}</div>
-                                    <p className=" mb-4">{item.description}</p>
-                                    <div className="flex justify-between items-center">
-                                        <span className=" font-semibold">${item.price}</span>
-                                        <div>
-                                            {/* Button to add to cart */}
-                                            <button className="bg-black  text-white hover:bg-yellow-600 hover:text-black p-2 hover:font-bold" onClick={() => addToCart(item)}>
-                                                <IoCartOutline />
-                                            </button>
-                                            {/* Button to remove from wishlist */}
-                                            <button className="bg-black  text-white hover:bg-yellow-600 hover:text-black p-2 hover:font-bold" onClick={() => removeFromWishlist(index)}>
-                                                <MdOutlineDelete />
-                                            </button>
+        <>
+
+            <div className="bg-white p-8 m-8 shadow-lg pt-10 mt-10">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 className="text-3xl font-bold text-gray-800 mb-8">Your Favorite Product : </h1>
+                    {wishlistItems.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center h-64"> {/* Adjust the height as needed */}
+                            <FaHeartBroken className="text-6xl text-gray-600" /> {/* React Icons heart-broken icon */}
+                            <p className="text-gray-600 mt-4">Your wishlist is empty.</p>
+                            <Link to='/necklaces' className="text-yellow-600 font-poppins  hover:underline font-bold"> Go to shopping </Link>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {wishlistItems.map((item, index) => (
+                                <div key={index} className="bg-white  text-black  shadow-md rounded-lg overflow-hidden flex items-center p-4">
+                                    <div className="flex-shrink-0">
+                                        <img src={item.images} alt={item.name} className="h-16 w-16 rounded-full object-cover" />
+                                    </div>
+                                    <div className="ml-4 flex-grow">
+                                        <div className="text-xl font-semibold text-gray-800 mb-2">{item.name}</div>
+                                        <p className=" mb-4">{item.description}</p>
+                                        <div className="flex justify-between items-center">
+                                            <span className=" font-semibold">${item.price}</span>
+                                            <div>
+                                                {/* Button to add to cart */}
+                                                <button className="bg-black  text-white hover:bg-yellow-600 hover:text-black p-2 hover:font-bold" onClick={() => addToCart(item)}>
+                                                    <IoCartOutline />
+                                                </button>
+                                                {/* Button to remove from wishlist */}
+                                                <button className="bg-black  text-white hover:bg-yellow-600 hover:text-black p-2 hover:font-bold" onClick={() => removeFromWishlist(index)}>
+                                                    <MdOutlineDelete />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+            <FeaturedProducts />
+        </>
     );
 }
 

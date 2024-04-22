@@ -3,14 +3,23 @@ import ProductCard from "../../Components/ProductCard.jsx";
 import NicklacesData from "../../DATA/NicklacesData.jsx";
 import CarouselBanner from "../../Components/CarouselBanner.jsx";
 import HeroSection from "../../Components/HeroSection.jsx";
+import nicklacespic from '../../assets/Necklacepng.png'
+import { toast } from "react-toastify";
+
 const Necklaces = () => {
-  const [showSearch, setShowSearch] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 8;
   const [cartItems, setCartItems] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+
+
+  const imagesbanner = [
+    "https://christopherduquet.com/wp-content/uploads/2022/11/necklace-designer-philosophy-focus-on-natural-beauty-christopher-duquet-fine-jewelry-evanston-il.jpg",
+    "https://christopherduquet.com/wp-content/uploads/2021/11/EC-snowflakes-falling-snow-diamond-couture-necklace-christopher-duquet-banner.jpg",
+    // More images
+  ];
 
   useEffect(() => {
     // Load cart items from local storage when the component mounts
@@ -47,12 +56,19 @@ const Necklaces = () => {
   };
 
   const addToCart = (product) => {
+
     setCartItems([...cartItems, product]);
-  };
+    toast.success("Product successfully added to carte items!", {
+      position: "bottom-right",
+    });
+
+  }
   const addToWish = (product) => {
-    console.log("product added to wishlist => ", product)
     setWishList([...wishList, product]);
-  };
+    toast.success("Product successfully added to the wishlist!", {
+      position: "bottom-right",
+    });
+  }
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -73,21 +89,14 @@ const Necklaces = () => {
         />
       </div>
 
-      {/* Search Bar */}
-      <div
-        className={`mt-4 ${showSearch ? "block" : "hidden"
-          } transition-all duration-500 ease-in-out`}
-      ></div>
 
-      {/* Main Content Area */}
       <div>
-        {/* Necklace Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {currentItems.map((item, index) => (
             <ProductCard
               key={index}
               productName={item.name}
-              imageUrl={item.images[0]} // Assuming only one image per item
+              imageUrl={item.images[0]}
               price={item.price}
               promotion={item.promotion}
               onAddToCart={() => addToCart(item)}
@@ -131,9 +140,10 @@ const Necklaces = () => {
 
         {/* Carousel  */}
 
-        <CarouselBanner />
+        <CarouselBanner images={imagesbanner} />
 
-        <HeroSection />
+        <HeroSection picture={nicklacespic} title="Nicklaces"
+          description="Discover our stunning range of nikclaces, from elegant classics to modern statement pieces." />
       </div>
     </div>
   );
