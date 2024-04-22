@@ -16,7 +16,7 @@ const Header = () => {
         if (storedCartItems) {
             setCartItems(JSON.parse(storedCartItems));
         }
-    }, [localStorage.getItem('cartItems')]);
+    }, [localStorage.getItem('cartItems'), cartItems.length]);
 
     const toggleDrawer = () => setShowDrawer(!showDrawer);
     const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);

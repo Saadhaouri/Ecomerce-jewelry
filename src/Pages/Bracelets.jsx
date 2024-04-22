@@ -39,23 +39,45 @@ const Bracelets = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const addToCart = (product) => {
+        // Check if the product is already in the cart
+        const exists = cartItems.some(item => item.id === product.id);
 
-        setCartItems([...cartItems, product]);
-        toast.success("Product successfully added to carte items!", {
-            position: "bottom-right",
-        });
+        if (!exists) {
+            // Add product to the cart if it doesn't already exist
+            setCartItems([...cartItems, product]);
+            toast.success("Product successfully added to cart!", {
+                position: "bottom-right",
+            });
+        } else {
+            // Notify user that product is already in the cart
+            toast.error("Product is already in the cart!", {
+                position: "bottom-right",
+            });
+        }
+    };
 
-    }
     const addToWish = (product) => {
-        setWishList([...wishList, product]);
-        toast.success("Product successfully added to the wishlist!", {
-            position: "bottom-right",
-        });
-    }
+        // Check if the product is already in the wishlist
+        const exists = wishList.some(item => item.id === product.id);
+
+        if (!exists) {
+            // Add product to the wishlist if it doesn't already exist
+            setWishList([...wishList, product]);
+            toast.success("Product successfully added to the wishlist!", {
+                position: "bottom-right",
+            });
+        } else {
+            // Notify user that product is already in the wishlist
+            toast.error("Product is already in the wishlist!", {
+                position: "bottom-right",
+            });
+        }
+    };
+
     const handleSearchInputChange = (e) => setSearchQuery(e.target.value);
 
     return (
-        <div className="container mx-auto px-4 pt-10 mt-10">
+        <div className="container mx-auto px-4 ">
             <div className="flex justify-between items-center py-4">
                 <h2 className="text-3xl font-bold text-center text-black">Bracelets</h2>
                 <input

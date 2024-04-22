@@ -43,7 +43,7 @@ function ProductCard({
         />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{productName}</div>
-          <p className="text-gray-700 text-base">{price}</p>
+          <p className="text-gray-700 text-base">{price} DH </p>
           {promotion && <p className="text-green-500 text-sm">{promotion}</p>}
         </div>
         {hovered && (
