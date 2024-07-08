@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { HeartOutlined, ShoppingCartOutlined, MenuOutlined } from '@ant-design/icons';
 import { Badge, Button, Drawer } from 'antd';
 import logo from '../assets/jewelryLogo.png';
-import { FaCartArrowDown } from 'react-icons/fa';
+import { FaCartArrowDown, FaTrash } from 'react-icons/fa';
 
 const Header = () => {
     const jewelryTypes = ['Necklaces', 'Earrings', 'Bracelets', 'Rings'];
@@ -16,7 +16,7 @@ const Header = () => {
         if (storedCartItems) {
             setCartItems(JSON.parse(storedCartItems));
         }
-    }, [localStorage.getItem('cartItems'), cartItems.length]);
+    }, [cartItems]);
 
     const toggleDrawer = () => setShowDrawer(!showDrawer);
     const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
@@ -29,41 +29,43 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-white shadow-md py-4 px-4 lg:px-10">
+        <header className="bg-white text-black shadow-md py-4 px-4 lg:px-10">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <Link to="/">
                         <img src={logo} alt="Logo" className="h-12" />
                     </Link>
                     <button className="lg:hidden ml-4" onClick={toggleMobileMenu}>
-                        <MenuOutlined />
+                        <MenuOutlined className="text-white" />
                     </button>
                 </div>
-                <nav className={`${mobileMenuOpen ? 'block' : 'hidden'} lg:block`}>
-                    <ul className="flex flex-col lg:flex-row lg:ml-6 text-yellow-600 font-bold">
+                <nav className={`${mobileMenuOpen ? 'block' : 'hidden'} lg:flex lg:items-center lg:ml-6 text-yellow-500 font-bold`}>
+                    <ul className="flex flex-col lg:flex-row">
                         <li className='mr-4'>
-                            <Link to='/' className="hover:text-gray-300">Home</Link>
+                            <Link to='/' className="hover:text-gray-200 transition duration-150 ease-in-out">Home</Link>
                         </li>
                         {jewelryTypes.map(type => (
                             <li key={type} className="mr-4">
-                                <Link to={`/${type.toLowerCase()}`} className="hover:text-gray-300">{type}</Link>
+                                <Link to={`/${type.toLowerCase()}`} className="hover:text-gray-200 transition duration-150 ease-in-out">{type}</Link>
                             </li>
                         ))}
                     </ul>
                 </nav>
                 <div className="flex items-center">
-                    <Link to="/wishlist"> <HeartOutlined className="text-[32px] text-yellow-600" /></Link>
+                    <Link to="/wishlist">
+                        <HeartOutlined className="text-[32px] text-pink-500 animate-bounce" />
+                    </Link>
                     <Badge count={cartItems.length} offset={[10, -10]}>
-                        <ShoppingCartOutlined onClick={toggleDrawer} className="ml-2 text-[32px] text-yellow-600" />
+                        <ShoppingCartOutlined onClick={toggleDrawer} className="ml-2 text-[32px] text-yellow-600 cursor-pointer" />
                     </Badge>
                 </div>
             </div>
             <Drawer title="Cart Items" placement="right" onClose={toggleDrawer} open={showDrawer}>
                 {cartItems.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-64"> {/* Adjust the height as needed */}
-                        <FaCartArrowDown className="text-6xl text-gray-600" /> {/* React Icons heart-broken icon */}
-                        <p className="text-gray-600 mt-4">Your Itemcarts is empty.</p>
-                        <Link to='/necklaces' className="text-yellow-600 font-poppins  hover:underline font-bold"> Go to shopping </Link>
+                    <div className="flex flex-col items-center justify-center h-64">
+                        <FaCartArrowDown className="text-6xl text-gray-600" />
+                        <p className="text-gray-600 mt-4">Your cart is empty.</p>
+                        <Link to='/necklaces' className="text-yellow-600 font-poppins  hover:underline font-bold">Go to shopping</Link>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-4">
@@ -74,8 +76,13 @@ const Header = () => {
                                     <div className="text-lg font-bold">{item.name}</div>
                                     <div className="text-gray-700">${item.price}</div>
                                 </div>
-                                <Button className="ml-auto" onClick={() => removeFromCart(index)}>Remove</Button>
-                            </div>
+                                <button
+                                    className=" flex justify-center items-center border border-red-500 text-red-500 p-2 rounded-full hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-400"
+                                    onClick={() => removeFromCart(index)}
+                                >
+                                    <FaTrash className="" />
+
+                                </button>                        </div>
                         ))}
                         <Link to="/cartItems" onClick={() => setShowDrawer(false)} className="mt-4 block text-center bg-yellow-600 text-white py-2 rounded-md hover:bg-yellow-500">Go to Cart Items</Link>
                     </div>

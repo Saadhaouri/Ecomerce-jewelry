@@ -5,6 +5,7 @@ import CarouselBanner from "../../Components/CarouselBanner.jsx";
 import HeroSection from "../../Components/HeroSection.jsx";
 import nicklacespic from '../../assets/Necklacepng.png'
 import { toast } from "react-toastify";
+import WhoWeAre from "../WhoWeAre.jsx";
 
 const Necklaces = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +32,7 @@ const Necklaces = () => {
     if (storedWishList) {
       setWishList(JSON.parse(storedWishList));
     }
-  }, []); // Empty dependency array ensures this effect runs only once on component mount
+  }, []);
 
   useEffect(() => {
     // Update local storage whenever cartItems state changes
@@ -97,7 +98,8 @@ const Necklaces = () => {
 
   return (
     <div className="container mx-auto px-4">
-      {/* Category Button in Header */}
+
+
       <div className="flex justify-between items-center py-4">
         <h2 className="text-3xl font-bold text-center text-black">Necklaces</h2>
 
@@ -158,8 +160,6 @@ const Necklaces = () => {
             Next
           </button>
         </div>
-
-        {/* Carousel  */}
 
         <CarouselBanner images={imagesbanner} />
 

@@ -32,7 +32,7 @@ function ProductCard({
     <>
 
       <div
-        className="max-w-sm rounded overflow-hidden bg-white shadow-lg relative"
+        className="max-w-sm bg-white rounded-lg overflow-hidden shadow-md relative transition-transform transform hover:scale-105"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -47,16 +47,17 @@ function ProductCard({
           {promotion && <p className="text-green-500 text-sm">{promotion}</p>}
         </div>
         {hovered && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
-            <button className="text-white mr-4" onClick={handleAddToCart}>
-              <FaShoppingCart className="mr-1 text-[22px]" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-60 p-4 transition-opacity duration-300">
+            <button className="text-white bg-yellow-600 hover:bg-yellow-500 p-2 rounded-full mb-2"
+              onClick={handleAddToCart}>
+              <FaShoppingCart className="text-[22px]" />
             </button>
-            <button className="text-white mr-6" onClick={handleAddToWishlist}>
-              <FaHeart className="mr-1 text-[22px]" />
+            <button className="text-white bg-red-600 hover:bg-red-500 p-2 rounded-full mb-2" onClick={handleAddToWishlist}>
+              <FaHeart className=" text-[22px]" />
             </button>
-            <button className="text-white" >
+            <button className="text-white bg-blue-600 hover:bg-blue-500 p-2 rounded-full">
               <Link to={`product-details/${id}`} >
-                <FaInfoCircle className="mr-1 text-[22px]" />
+                <FaInfoCircle className=" text-[22px]" />
               </Link>
             </button>
           </div>

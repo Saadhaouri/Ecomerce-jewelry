@@ -13,7 +13,8 @@ import MFooter from "./Components/MFooter.jsx";
 import ShoppingCart from "./Pages/ShoppingCart.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import WhoWeAre from "./Pages/WhoWeAre.jsx";
+import OurPhilosophy from "./Pages/OurPhilosophy.jsx";
 
 function App() {
   return (
@@ -24,13 +25,16 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<WhoWeAre />} />
+          <Route path="/ourphilosophy" element={<OurPhilosophy />} />
           <Route path="/necklaces" element={<Necklaces />} />
           <Route path="/earrings" element={<Earrings />} />
           <Route path="/bracelets" element={<Bracelets />} />
           <Route path="/rings" element={<Rings />} />
-          <Route path="/necklaces/product-details/:id" element={<ProductDetailsPage />} />
+          <Route path="/:category/product-details/:id" element={<ProductDetailsPage />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cartitems" element={<ShoppingCart />} />
+
         </Routes>
 
         <ToastContainer />

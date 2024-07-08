@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 const MFooter = () => {
     return (
@@ -19,9 +20,11 @@ const MFooter = () => {
                         <p className="font-semibold text-gray-800 dark:text-white">Quick Link</p>
 
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Home</p>
-                            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Who We Are</p>
-                            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Our Philosophy</p>
+                            <Link to='/' className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Home</Link>
+                            <Link to='/about' className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
+                                Who We Are
+                            </Link>
+                            <Link to='/ourphilosophy' className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">Our Philosophy</Link>
                         </div>
                     </div>
 
